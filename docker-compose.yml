@@ -1,0 +1,14 @@
+services:
+  poco-service-mcp:
+    image: registry.cn-hangzhou.aliyuncs.com/ripper/poco-service-mcp
+    container_name: poco-service-mcp
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MCP_TRANSPORT: http
+      MCP_HOST: 0.0.0.0
+      MCP_PORT: 8090
+      BACKEND_BASE_URL: http://host.docker.internal:8000/api/v1
+    ports:
+      - "8090:8090"
